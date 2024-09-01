@@ -1,0 +1,520 @@
+// Colors //
+
+$bg_color: rgb(10, 10, 10);
+$bg_color_second: rgb(34, 34, 34);
+$custom_color: rgb(184, 115, 51);
+$popupOverlayColor: rgba(0, 0, 0, 0.9);
+
+/* Variables */
+
+$nav-height: 120px !default;
+$footer-height: 240px !default;
+
+/* @media breakpoints */
+
+/** 1500pxoder schmaler */
+$breakpoint-lg: 1500px !default;
+
+/** 900px oder schmaler */
+$breakpoint-md: 900px !default;
+
+/** 500px oder schmaler */
+$breakpoint-sm: 500px !default;
+
+/** 350px oder schmaler */
+$breakpoint-xs: 350px !default;
+
+/** 300px oder schmaler */
+$breakpoint-xxs: 300px !default;
+
+/** 1500pxoder schmaler */
+// @media (max-width: $breakpoint-lg) {
+// }
+/** 900px oder schmaler */
+// @media (max-width: $breakpoint-md) {
+// }
+/** 500px oder schmaler */
+// @media (max-width: $breakpoint-sm) {
+// }
+/** 350px oder schmaler */
+// @media (max-width: $breakpoint-xs) {
+// }
+/** 300px oder schmaler */
+// @media (max-width: $breakpoint-xxs) {
+// }
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: $custom_color $bg_color_second;
+}
+
+.content {
+  min-height: calc(100vh - ($nav-height + $footer-height));
+}
+
+.nav_container {
+  display: flex;
+  justify-content: center;
+
+  background-color: $bg_color_second;
+
+  &--nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 1440px;
+    width: 100%;
+    height: $nav-height;
+
+    &--logo_text {
+      font-size: 28px;
+      color: $custom_color;
+      margin-left: 10px;
+
+      @media (max-width: $breakpoint-xxs) {
+        display: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &--logo {
+      height: 50px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.gallery_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  background-color: $bg_color;
+  min-height: calc(100vh - ($nav-height + $footer-height));
+
+  -webkit-tap-highlight-color: transparent; /* for WebKit-based browsers */
+  -webkit-touch-callout: none; /* for WebKit-based browsers */
+  -moz-user-select: none; /* for Firefox */
+  -ms-user-select: none; /* for Internet Explorer/Edge */
+  user-select: none; /* Standard */
+
+  &--grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1440px;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 10px;
+    gap: 10px;
+
+    padding-left: 35px;
+    padding-right: 35px;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $breakpoint-xs) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    &--img {
+      object-fit: cover;
+      object-position: center;
+      max-height: 100%;
+      max-width: 100%;
+      aspect-ratio: 16 / 9;
+      min-height: 100%;
+      min-width: 100%;
+
+      border: 0px solid transparent;
+      border-radius: 10px;
+    }
+  }
+
+  &--next_gallery {
+    height: 100px;
+    width: 100px;
+    fill: $custom_color;
+
+    transform: rotate(90deg);
+
+    -webkit-tap-highlight-color: transparent; /* for WebKit-based browsers */
+    -webkit-touch-callout: none; /* for WebKit-based browsers */
+    -moz-user-select: none; /* for Firefox */
+    -ms-user-select: none; /* for Internet Explorer/Edge */
+    user-select: none; /* Standard */
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.d_none {
+  display: none;
+}
+
+.filter-mayfair {
+  position: relative;
+  filter: contrast(1.1) brightness(1.15) saturate(1.1);
+  transform: scale(1);
+  transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out, z-index 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  z-index: 0;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0);
+
+  &::before {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    background: radial-gradient(circle closest-corner, transparent 0, rgba(175, 105, 24, 0.4) 100%);
+    content: "";
+    mix-blend-mode: multiply;
+  }
+
+  &:hover {
+    transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out, z-index 0s ease-in-out, box-shadow 0.5s ease-in-out;
+    filter: contrast(1) brightness(1) saturate(1);
+    transform: scale(1.2);
+    z-index: 999;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 1);
+
+    @media (max-width: $breakpoint-xs) {
+      transform: scale(1);
+    }
+
+    &::before {
+      opacity: 0;
+    }
+  }
+}
+
+.popup {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: $popupOverlayColor;
+
+  -webkit-tap-highlight-color: transparent; /* for WebKit-based browsers */
+  -webkit-touch-callout: none; /* for WebKit-based browsers */
+  -moz-user-select: none; /* for Firefox */
+  -ms-user-select: none; /* for Internet Explorer/Edge */
+  user-select: none; /* Standard */
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+  }
+
+  &--img_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 1280px;
+    max-height: 720px;
+
+    @media (max-width: $breakpoint-md) {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    &--content {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      aspect-ratio: 16 / 9;
+    }
+
+    &--textarea {
+      min-height: 50px;
+      margin-top: 20px;
+      font-size: 22px;
+      color: $custom_color;
+      text-align: center;
+
+      @media (max-width: $breakpoint-lg) {
+        min-height: 100px;
+        font-size: 18px;
+      }
+
+      @media (max-width: $breakpoint-md) {
+        min-height: 150px;
+        font-size: 18px;
+      }
+    }
+  }
+
+  &--close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  &--back_button,
+  &--forward_button {
+    height: 100px;
+    width: 100px;
+    fill: $custom_color;
+
+    margin-bottom: 150px;
+
+    -webkit-tap-highlight-color: transparent; /* for WebKit-based browsers */
+    -webkit-touch-callout: none; /* for WebKit-based browsers */
+    -moz-user-select: none; /* for Firefox */
+    -ms-user-select: none; /* for Internet Explorer/Edge */
+    user-select: none; /* Standard */
+
+    @media (max-width: $breakpoint-md) {
+      transform: rotate(90deg);
+      margin-bottom: 0px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &--back_button {
+    padding-left: 25px;
+  }
+
+  &--forward_button {
+    transform: rotate(180deg);
+    padding-left: 25px;
+
+    @media (max-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &--forward_button_mobile {
+    display: none;
+
+    @media (max-width: $breakpoint-md) {
+      display: block;
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.footer_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $bg_color_second;
+
+  &--footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 1440px;
+    width: 100%;
+    height: $footer-height;
+
+    padding-left: 35px;
+    padding-right: 35px;
+
+    &--heading {
+      font-size: 24px;
+      color: $custom_color;
+      padding-top: 25px;
+      padding-bottom: 25px;
+      text-align: center;
+
+      @media (max-width: $breakpoint-md) {
+        font-size: 16px;
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+    }
+
+    &--loop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 1440px;
+      width: 100%;
+      height: $footer-height;
+      overflow: hidden;
+
+      ul {
+        display: flex;
+        align-items: center;
+        flex-flow: row nowrap;
+        width: 200%;
+        animation: loop 50s linear infinite;
+
+        @media (max-width: $breakpoint-md) {
+          width: 300%;
+        }
+
+        @media (max-width: $breakpoint-sm) {
+          width: 500%;
+        }
+
+        @media (max-width: $breakpoint-xs) {
+          width: 600%;
+        }
+
+        li {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-size: 16px;
+          color: white;
+          width: 50vw;
+
+          @media (max-width: $breakpoint-md) {
+            font-size: 14px;
+          }
+          @media (max-width: $breakpoint-xxs) {
+            font-size: 10px;
+          }
+
+          img {
+            display: block;
+            width: 70%;
+            aspect-ratio: 16 / 9;
+            border: 0px solid transparent;
+            border-radius: 10px;
+            margin-bottom: 5px;
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, z-index 0s ease-in-out, box-shadow 0.3s ease-in-out;
+
+            @media (max-width: $breakpoint-md) {
+              width: 90%;
+            }
+
+            &:hover {
+              cursor: pointer;
+              transform: scale(1.1);
+              transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, z-index 0s ease-in-out, box-shadow 0.3s ease-in-out;
+            }
+          }
+        }
+      }
+
+      &:hover ul {
+        animation-play-state: paused;
+      }
+
+      @keyframes loop {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+    }
+  }
+}
+
+.popupFooter {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: $popupOverlayColor;
+
+  -webkit-tap-highlight-color: transparent; /* for WebKit-based browsers */
+  -webkit-touch-callout: none; /* for WebKit-based browsers */
+  -moz-user-select: none; /* for Firefox */
+  -ms-user-select: none; /* for Internet Explorer/Edge */
+  user-select: none; /* Standard */
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+  }
+
+  &--content {
+    max-width: 75%;
+    max-height: 75%;
+    object-fit: cover;
+    border-radius: 10px;
+    aspect-ratio: 16 / 9;
+
+    @media (max-width: $breakpoint-lg) {
+      max-width: 80%;
+      max-height: 80%;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      max-width: 90%;
+      max-height: 90%;
+    }
+  }
+
+  &--textarea {
+    min-height: 50px;
+    margin-top: 20px;
+    font-size: 22px;
+    color: $custom_color;
+    text-align: center;
+
+    @media (max-width: $breakpoint-lg) {
+      min-height: 100px;
+      font-size: 18px;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      min-height: 150px;
+      font-size: 18px;
+    }
+  }
+
+  &--close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
