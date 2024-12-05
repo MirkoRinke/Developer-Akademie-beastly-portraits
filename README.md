@@ -7,10 +7,6 @@
 
 Welcome to my fifth project as part of the Developer Academy! In this project, I created a website for Beastly Portraits, featuring a captivating collection of animal images that capture the beauty and diversity of the animal kingdom. Let yourself be enchanted by stunning snapshots from nature!
 
-## 🔗 Links
-
-- [Live Site URL](https://delightful-rugelach-5dfb04.netlify.app/)
-
 
 ## 🛠️ Built with
 
@@ -33,4 +29,5 @@ Welcome to my fifth project as part of the Developer Academy! In this project, I
 
 ## ✍️ Author
 
-- Website - [My Github](https://github.com/MirkoRinke)
+ - [Webiste](https://mirkorinke.dev)
+ - [Github](https://github.com/MirkoRinke)
